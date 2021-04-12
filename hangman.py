@@ -59,5 +59,19 @@ def hangman():
     else:
         print(f"Oh shoot... {word} saved him :-[")
 
+
+def hangman_loop(end_char="q"):
+    """We can choose whether to play the game again
+
+    If the character string specified by end_char is entered, it can be finished
+    """
+    inputed_char = ""
+    content = f"If you want to end this game, press {end_char}: "
+
+    while inputed_char != end_char:
+        hangman()
+        inputed_char = input(content)
+
+
 if __name__ == '__main__':
-    hangman()
+    hangman_loop()
