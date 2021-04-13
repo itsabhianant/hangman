@@ -129,7 +129,6 @@ if __name__ == '__main__':
 
 #TODO:
 
-# Add option to exit the game when asking for e, m, i, h.
 
 # Add a score board that reflects points of the player after 
 # completion of every game independent of the results or what input 
