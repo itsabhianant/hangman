@@ -76,6 +76,7 @@ def hangman():
         print(f"\nTake your freaking score...it's: {score}")
 
 
+
 def terminate():
     print("terminate")
     print("see you again")
