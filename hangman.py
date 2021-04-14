@@ -81,6 +81,7 @@ def hangman_handling(function=None):
     """
     try:
         hangman()
+        hangman_loop()
     except KeyboardInterrupt:
         if function:
             function()
@@ -141,7 +142,6 @@ def ask_for_level():
 
 if __name__ == '__main__':
     hangman_handling(terminate)
-    hangman_loop()
 
 
 
