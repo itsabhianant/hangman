@@ -26,12 +26,16 @@ def hangman():
 
     if lives == 12:
         visual = lives_visual_dict_easy
+        point = int(1)
     elif lives == 9:
         visual = lives_visual_dict_medium
+        point = int(5)
     elif lives == 6:
         visual = lives_visual_dict_hard
+        point = int(10)
     elif lives == 3:
         visual = lives_visual_dict_impossible
+        point = int(15)
 
     while len(word_letters) > 0 and lives > 0:
 
@@ -65,8 +69,11 @@ def hangman():
     if lives == 0:
         print(lives_visual_dict_easy[lives])
         print(f"Hahaha... he died... The word was {word}")
+        print("\nYou got 0 points... LOL...XD")
     else:
         print(f"Oh shoot... {word} saved him :-[")
+        score = point*lives
+        print(f"\nTake your freaking score...it's: {score}")
 
 
 def terminate():
@@ -95,7 +102,7 @@ def hangman_loop(end_char="q"):
     If the character string specified by end_char is entered, it can be finished
     """
     inputed_char = ""
-    content = f"If you want to end this game, press {end_char}: "
+    content = f"\nIf you want to end this game, press {end_char}: "
 
     while True:
         inputed_char = input(content)
@@ -148,17 +155,8 @@ if __name__ == '__main__':
 #TODO:
 
 
-# Add a score board that reflects points of the player after 
-# completion of every game independent of the results or what input 
-# player has given.A more advanced version will be if the program 
-# distributes points on the basis of chances left to win the match
-# For ex: If the player wins by 9 lives remaining in easy mode he/she 
-# gets 9*1 points. If the player wins by 4 lives remaining in medium 
-# mode he/she gets 5*5 points. If the player wins by 2 lives remaining
-# in hard mode he/she gets 2*10 points. If the player wins by 1 life
-# remaining in impossible mode he/she gets 1*15 points. It will be nice
-# if the player sees the points he earned from a specific round and also
-# what his total score is.
+# It will be great if the program also displays the total score gained
+# by a player in a single program run.
 
 # Adjust the length of the word that is given for ex: if player selects
 # easy than word length is >= 6
