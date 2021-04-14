@@ -69,11 +69,12 @@ def hangman():
     if lives == 0:
         print(lives_visual_dict_easy[lives])
         print(f"Hahaha... he died... The word was {word}")
-        print("You got 0 points... LOL...XD")
+        print("\nYou got 0 points... LOL...XD")
     else:
         print(f"Oh shoot... {word} saved him :-[")
         score = point*lives
-        print(f"Take your freaking score...it's: {score}")
+        print(f"\nTake your freaking score...it's: {score}")
+
 
 
 def terminate():
@@ -102,7 +103,7 @@ def hangman_loop(end_char="q"):
     If the character string specified by end_char is entered, it can be finished
     """
     inputed_char = ""
-    content = f"If you want to end this game, press {end_char}: "
+    content = f"\nIf you want to end this game, press {end_char}: "
 
     while True:
         inputed_char = input(content)
