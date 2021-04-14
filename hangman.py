@@ -69,6 +69,24 @@ def hangman():
         print(f"Oh shoot... {word} saved him :-[")
 
 
+def terminate():
+    print("terminate")
+    print("see you again")
+
+
+def hangman_handling(function=None):
+    """When it is terminated with ctrl + c, it calls the function specified by the function argument and terminates
+
+    If you use this, user's environment will not be displayed.
+    """
+    try:
+        hangman()
+    except KeyboardInterrupt:
+        if function:
+            function()
+        quit()
+
+
 def hangman_loop(end_char="q"):
     """
     We can choose whether to play the game again
@@ -81,7 +99,7 @@ def hangman_loop(end_char="q"):
     while True:
         inputed_char = input(content)
         if inputed_char != end_char:
-            hangman()
+            hangman_handling(terminate)
         else:
             break
 
@@ -122,7 +140,7 @@ def ask_for_level():
 
 
 if __name__ == '__main__':
-    hangman()
+    hangman_handling(terminate)
     hangman_loop()
 
 
