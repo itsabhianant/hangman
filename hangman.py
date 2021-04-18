@@ -90,7 +90,6 @@ def terminate():
 
 def hangman_handling(function=None):
     """When it is terminated with ctrl + c, it calls the function specified by the function argument and terminates
-
     If you use this, user's environment will not be displayed.
     """
     try:
@@ -105,7 +104,6 @@ def hangman_handling(function=None):
 def hangman_loop(end_char="q"):
     """
     We can choose whether to play the game again
-
     If the character string specified by end_char is entered, it can be finished
     """
     inputed_char = ""
@@ -117,7 +115,7 @@ def hangman_loop(end_char="q"):
             hangman_handling(terminate)
         else:
             print(f"your total score: {total_score}")
-            break
+            quit()
 
 def ask_for_level():
     """
@@ -157,7 +155,6 @@ def ask_for_level():
 
 if __name__ == '__main__':
     hangman_handling(terminate)
-
 
 
 #TODO:
