@@ -1,19 +1,35 @@
 import random
 from words import words
-from hangman_visual import lives_visual_dict_easy, lives_visual_dict_hard, lives_visual_dict_medium, lives_visual_dict_impossible
+from hangman_visual import lives_visual_dict_easy, lives_visual_dict_hard, lives_visual_dict_medium, \
+    lives_visual_dict_impossible
 import string
-
 
 total_score = 0
 
 
-def get_valid_word(words):
-    """Gets word from words.py wihtout '-' or ' '."""
-
+# Return a random word based on difficulty
+def choose_word(length):
     word = random.choice(words)
-    while '-' in word or ' ' in word:
+    while len(word) <= length or '-' in word or ' ' in word:
         word = random.choice(words)
+        print("LENGTH OF WORD" + str(len(word)))
+    return word
 
+
+def get_valid_word(words, lives):
+    """Gets word from words.py wihtout '-' or ' '."""
+    word = ""
+
+    if lives == 12:
+        word = choose_word(5)
+    elif lives == 9:
+        word = choose_word(7)
+    elif lives == 6:
+        word = choose_word(9)
+    elif lives == 3:
+        word = random.choice(words)
+        while len(word) > 10 or '-' in word or ' ' in word:
+            word = random.choice(words)
     return word.upper()
 
 
@@ -22,12 +38,12 @@ def hangman():
 
     global total_score
 
-    word = get_valid_word(words)
+    lives = ask_for_level()
+
+    word = get_valid_word(words, lives)
     word_letters = set(word)
     alphabet = set(string.ascii_uppercase)
     used_letters = set()
-
-    lives = ask_for_level()
 
     if lives == 12:
         visual = lives_visual_dict_easy
@@ -51,7 +67,7 @@ def hangman():
         print(f"Current word: ", " ".join(word_list))
 
         user_letter = input("Guess a letter: ").upper()
-        
+
         if user_letter in alphabet - used_letters:
             used_letters.add(user_letter)
             if user_letter in word_letters:
@@ -61,15 +77,14 @@ def hangman():
             else:
                 lives = lives - 1
                 print(f"\nYou have guessed the wrong letter... {user_letter} not in the word.")
-        
+
         elif user_letter in used_letters:
             print("\nYou have already guessed that number.")
 
         else:
             print(f"{user_letter} is not a valid input.")
 
-
-            #gets here when len(word_letters) == 0 or lives == 0
+            # gets here when len(word_letters) == 0 or lives == 0
 
     if lives == 0:
         print(lives_visual_dict_easy[lives])
@@ -77,10 +92,9 @@ def hangman():
         print("\nYou got 0 points... LOL...XD")
     else:
         print(f"Oh shoot... {word} saved him :-[")
-        score = point*lives
+        score = point * lives
         total_score += score
         print(f"\nTake your freaking score...it's: {score}")
-
 
 
 def terminate():
@@ -117,20 +131,19 @@ def hangman_loop(end_char="q"):
             print(f"your total score: {total_score}")
             quit()
 
+
 def ask_for_level():
     """
     Asks the player how hard he/she wants the game to be and assigns
     lives accordingly.
     """
 
-    
-
-    while True:   
+    while True:
         print("\n1) Easy (e): Lives: 12")
         print("2) Medium (m): Lives: 9")
         print("3) Hard (h): Lives: 6")
         print("4) Impossible (i): Lives: 3")
-        
+
         level = input("\nSelect your level from above: ")
         if level == 'e':
             life = 12
@@ -144,7 +157,7 @@ def ask_for_level():
         elif level == 'i':
             life = 3
             break
-                    
+
         else:
             print("\nPlease choose a valid option\n")
             continue
@@ -152,12 +165,10 @@ def ask_for_level():
     return life
 
 
-
 if __name__ == '__main__':
     hangman_handling(terminate)
 
-
-#TODO:
+# TODO:
 
 
 # It will be great if the program also displays the total score gained
