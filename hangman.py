@@ -4,6 +4,9 @@ from hangman_visual import lives_visual_dict_easy, lives_visual_dict_hard, lives
 import string
 
 
+total_score = 0
+
+
 def get_valid_word(words):
     """Gets word from words.py wihtout '-' or ' '."""
 
@@ -16,6 +19,8 @@ def get_valid_word(words):
 
 def hangman():
     """Defines the logic of this program."""
+
+    global total_score
 
     word = get_valid_word(words)
     word_letters = set(word)
@@ -73,6 +78,7 @@ def hangman():
     else:
         print(f"Oh shoot... {word} saved him :-[")
         score = point*lives
+        total_score += score
         print(f"\nTake your freaking score...it's: {score}")
 
 
@@ -110,6 +116,7 @@ def hangman_loop(end_char="q"):
         if inputed_char != end_char:
             hangman_handling(terminate)
         else:
+            print(f"your total score: {total_score}")
             break
 
 def ask_for_level():
