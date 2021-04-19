@@ -15,7 +15,7 @@ def get_valid_word(words, lives):
         word_dict = [word for word in words if len(word) >= 4 and len(word) <= 6]
         word = random.choice(word_dict)
     elif lives == 9:
-        word_dict = [word for word in words if len(word) >= 6 and len(word) <= 8]
+        word_dict = [word for word in words if len(word) >= 7 and len(word) <= 8]
         word = random.choice(word_dict)
     elif lives == 6:
         word_dict = [word for word in words if len(word) >= 8 and len(word) <= 10]
