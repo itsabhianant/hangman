@@ -6,33 +6,6 @@ import string
 
 total_score = 0
 
-
-# Return a random word based on difficulty
-def choose_word(length):
-    word = random.choice(words)
-    while len(word) <= length or '-' in word or ' ' in word:
-        word = random.choice(words)
-        print("LENGTH OF WORD" + str(len(word)))
-    return word
-
-
-def get_valid_word(words, lives):
-    """Gets word from words.py wihtout '-' or ' '."""
-    word = ""
-
-    if lives == 12:
-        word = choose_word(5)
-    elif lives == 9:
-        word = choose_word(7)
-    elif lives == 6:
-        word = choose_word(9)
-    elif lives == 3:
-        word = random.choice(words)
-        while len(word) > 10 or '-' in word or ' ' in word:
-            word = random.choice(words)
-    return word.upper()
-
-
 def hangman():
     """Defines the logic of this program."""
 
@@ -40,23 +13,35 @@ def hangman():
 
     lives = ask_for_level()
 
-    word = get_valid_word(words, lives)
-    word_letters = set(word)
-    alphabet = set(string.ascii_uppercase)
-    used_letters = set()
-
+    # get word based on difficulty
     if lives == 12:
+        word_dict = [word for word in words if len(word) >= 6] 
+        word = random.choice(word_dict)
         visual = lives_visual_dict_easy
         point = int(1)
     elif lives == 9:
+        word_dict = [word for word in words if len(word) == 7 or len(word) == 8]
+        word = random.choice(word_dict)
         visual = lives_visual_dict_medium
         point = int(5)
     elif lives == 6:
+        word_dict = [word for word in words if len(word) == 9 or len(word) == 10]
+        word = random.choice(word_dict)
         visual = lives_visual_dict_hard
         point = int(10)
     elif lives == 3:
+        word_dict = [word for word in words if len(word) <=10]
+        word = random.choice(word_dict)
         visual = lives_visual_dict_impossible
         point = int(15)
+
+    # check for foul words
+    while '-' in word or ' ' in word:
+        word = random.choice(word_dict)
+
+    word_letters = set(word)
+    alphabet = set(string.ascii_uppercase)
+    used_letters = set()
 
     while len(word_letters) > 0 and lives > 0:
 
