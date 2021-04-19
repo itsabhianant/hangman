@@ -18,7 +18,7 @@ def get_valid_word(words, lives):
         word_dict = [word for word in words if len(word) >= 7 and len(word) <= 8]
         word = random.choice(word_dict)
     elif lives == 6:
-        word_dict = [word for word in words if len(word) >= 8 and len(word) <= 10]
+        word_dict = [word for word in words if len(word) >= 9 and len(word) <= 10]
         word = random.choice(word_dict)
     elif lives == 3:
         word_dict = [word for word in words if len(word) > 10]
@@ -165,6 +165,8 @@ def ask_for_level():
 if __name__ == '__main__':
     hangman_handling(terminate)
 
+
 # TODO:
+
 # Make test cases for this program.
 
