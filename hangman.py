@@ -11,13 +11,13 @@ def get_valid_word(words, lives):
     word = ""
 
     if lives == 12:
-        word_dict = [word for word in words if len(word) >= 4 and <=6] 
+        word_dict = [word for word in words if len(word) >= 4 and len(word) <=6] 
         word = random.choice(word_dict)
     elif lives == 9:
-        word_dict = [word for word in words if len(word) >=6 or len(word) <= 8]
+        word_dict = [word for word in words if len(word) >=6 and len(word) <= 8]
         word = random.choice(word_dict)
     elif lives == 6:
-        word_dict = [word for word in words if len(word) >=8 or len(word) <= 10]
+        word_dict = [word for word in words if len(word) >=8 and len(word) <= 10]
         word = random.choice(word_dict)
     elif lives == 3:
         word_dict = [word for word in words if len(word) > 10]
