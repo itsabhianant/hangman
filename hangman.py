@@ -6,120 +6,31 @@ import string
 
 total_score = 0
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 def get_valid_word(words, lives):
     """Gets word from words.py wihtout '-' or ' '."""
     word = ""
 
     if lives == 12:
-<<<<<<< HEAD
-<<<<<<< HEAD
-        word_dict = [word for word in words if len(word) >= 4 and len(word) <=6] 
+        word_dict = [word for word in words if len(word) >= 4 and len(word) <= 6]
         word = random.choice(word_dict)
     elif lives == 9:
-        word_dict = [word for word in words if len(word) >=6 and len(word) <= 8]
+        word_dict = [word for word in words if len(word) >= 6 and len(word) <= 8]
         word = random.choice(word_dict)
     elif lives == 6:
-        word_dict = [word for word in words if len(word) >=8 and len(word) <= 10]
+        word_dict = [word for word in words if len(word) >= 8 and len(word) <= 10]
         word = random.choice(word_dict)
     elif lives == 3:
         word_dict = [word for word in words if len(word) > 10]
         word = random.choice(word_dict)
-<<<<<<< HEAD
 
-      # check for foul words
-    while '-' in word or ' ' in word:
-        word = random.choice(word_dict)
-=======
-
-# Return a random word based on difficulty
-def choose_word(length):
-    word = random.choice(words)
-    while len(word) <= length or '-' in word or ' ' in word:
-        word = random.choice(words)
-        print("LENGTH OF WORD" + str(len(word)))
-    return word
-
->>>>>>> ec0ba71... words are now dependent on difficulty
-
-def get_valid_word(words, lives):
-    """Gets word from words.py wihtout '-' or ' '."""
-    word = ""
-
-    if lives == 12:
-        word = choose_word(5)
-    elif lives == 9:
-        word = choose_word(7)
-    elif lives == 6:
-        word = choose_word(9)
-    elif lives == 3:
-        word = random.choice(words)
-        while len(word) > 10 or '-' in word or ' ' in word:
-            word = random.choice(words)
-    return word.upper()
-
- 
- 
-=======
->>>>>>> 9d307ab... updated word-based difficulty and removed redundant code
-def hangman():
-    """Defines the logic of this program."""
-
-    global total_score
-
-    lives = ask_for_level()
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
->>>>>>> ec0ba71... words are now dependent on difficulty
-    word = get_valid_word(words, lives)
-    word_letters = set(word)
-    alphabet = set(string.ascii_uppercase)
-    used_letters = set()
-
-=======
-    # get word based on difficulty
->>>>>>> 9d307ab... updated word-based difficulty and removed redundant code
-=======
-def get_valid_word(words, lives):
-    """Gets word from words.py wihtout '-' or ' '."""
-    word = ""
-
->>>>>>> 33e588b... bug fixes
-    if lives == 12:
-        word_dict = [word for word in words if len(word) >= 6] 
-=======
-        word_dict = [word for word in words if len(word) >= 4 and <=6] 
->>>>>>> f11eafa... updated word ranges
-=======
-        word_dict = [word for word in words if len(word) >= 4 and len(word) <=6] 
->>>>>>> 8cd5cac... fixed typo
-        word = random.choice(word_dict)
-    elif lives == 9:
-        word_dict = [word for word in words if len(word) >=6 and len(word) <= 8]
-        word = random.choice(word_dict)
-    elif lives == 6:
-        word_dict = [word for word in words if len(word) >=8 and len(word) <= 10]
-        word = random.choice(word_dict)
-    elif lives == 3:
-        word_dict = [word for word in words if len(word) > 10]
-        word = random.choice(word_dict)
-        while len(word) > 10 or '-' in word or ' ' in word:
-            word = random.choice(words)
-=======
->>>>>>> 2f89563... removed old code from impossible difficulty
-
-      # check for foul words
+    # check for foul words
     while '-' in word or ' ' in word:
         word = random.choice(word_dict)
 
     return word.upper()
 
- 
- 
+
 def hangman():
     """Defines the logic of this program."""
 
@@ -255,16 +166,5 @@ if __name__ == '__main__':
     hangman_handling(terminate)
 
 # TODO:
-
-
-# It will be great if the program also displays the total score gained
-# by a player in a single program run.
-
-# Adjust the length of the word that is given for ex: if player selects
-# easy than word length is >= 6
-# medium than word length is >= 8
-# medium than word length is >= 10
-# impossible than word length is < 10
-# Also add some words in words[] of words.py which has 10+ letters.
 
 # Make test cases for this program.
