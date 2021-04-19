@@ -160,9 +160,6 @@ if __name__ == '__main__':
 #TODO:
 
 
-# It will be great if the program also displays the total score gained
-# by a player in a single program run.
-
 # Adjust the length of the word that is given for ex: if player selects
 # easy than word length is >= 6
 # medium than word length is >= 8
