@@ -162,8 +162,8 @@ if __name__ == '__main__':
 
 # Adjust the length of the word that is given for ex: if player selects
 # easy than word length is >= 6
-# medium than word length is >= 8
-# medium than word length is >= 10
+# medium than word length is 7 or 8
+# medium than word length is 9 or 10
 # impossible than word length is < 10
 # Also add some words in words[] of words.py which has 10+ letters.
 
