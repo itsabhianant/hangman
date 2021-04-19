@@ -21,9 +21,8 @@ def get_valid_word(words, lives):
         word = random.choice(word_dict)
     elif lives == 3:
         word_dict = [word for word in words if len(word) > 10]
+        print(word_dict)
         word = random.choice(word_dict)
-        while len(word) > 10 or '-' in word or ' ' in word:
-            word = random.choice(words)
 
       # check for foul words
     while '-' in word or ' ' in word:
