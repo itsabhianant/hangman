@@ -1,3 +1,4 @@
+"""Importing all the required libraries"""
 import random
 from words import words
 from hangman_visual import lives_visual_dict_easy, lives_visual_dict_hard, lives_visual_dict_medium, \
@@ -10,7 +11,7 @@ total_score = 0
 def get_valid_word(words, lives):
     """Gets word from words.py wihtout '-' or ' '."""
     word = ""
-
+    """Choosing words based on the difficulty level picked by user"""
     if lives == 12:
         word_dict = [word for word in words if len(word) >= 4 and len(word) <= 6]
         word = random.choice(word_dict)
@@ -42,6 +43,7 @@ def hangman():
     alphabet = set(string.ascii_uppercase)
     used_letters = set()
 
+    """Gives points to the user based on the difficulty level"""
     if lives == 12:
         visual = lives_visual_dict_easy
         point = int(1)
@@ -55,6 +57,7 @@ def hangman():
         visual = lives_visual_dict_impossible
         point = int(15)
 
+        """Prompting user on their current status"""
     while len(word_letters) > 0 and lives > 0:
 
         print(f"\nYou have {lives} lives left and you have used the letters:", " ".join(used_letters))
@@ -82,7 +85,7 @@ def hangman():
             print(f"{user_letter} is not a valid input.")
 
             # gets here when len(word_letters) == 0 or lives == 0
-
+    """Promt for THE END"""
     if lives == 0:
         print(lives_visual_dict_easy[lives])
         print(f"Hahaha... he died... The word was {word}")
