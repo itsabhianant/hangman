@@ -1,3 +1,4 @@
+"""Different stages for animation based in the difficulty"""
 lives_visual_dict_easy = {
         0: """
                 ___________
