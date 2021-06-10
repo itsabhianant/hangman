@@ -7,7 +7,7 @@
 
  ## How to get this game?
 
- 1) Just enter `` in your terminal
+ 1) Just enter `git clone git@github.com:itsabhianant/hangman.git` in your terminal
  2) This file consists of **Makefile** so just type `make a` in your terminal while remaining on the same directory. This will create a executable called `a`.
  3) Then just enter `./a` and the game will be ready to play.
 
